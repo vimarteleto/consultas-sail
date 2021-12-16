@@ -8,7 +8,6 @@ use App\Http\Requests\Appointment\UpdateAppointmentRequest;
 use App\Repositories\AppointmentRepository;
 use App\Repositories\PatientRepository;
 use App\Repositories\UserRepository;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
@@ -38,7 +37,7 @@ class DashboardController extends Controller
     public function getAppointmentById($id)
     {
         $appointment = $this->appointmentRepository->getAppointmentById($id);
-        $patients = $this->patientRepository->getPatients();
+        $patients = $this->patientRepository->getPatients()->sortBy('name');
         return view('appointments.edit-appointment', [
             'appointment' => $appointment,
             'patients' => $patients
@@ -60,7 +59,7 @@ class DashboardController extends Controller
 
     public function createAppointment()
     {
-        $patients = $this->patientRepository->getPatients();
+        $patients = $this->patientRepository->getPatients()->sortBy('name');
         return view('appointments.create-appointment', [
             'patients' => $patients
         ]);

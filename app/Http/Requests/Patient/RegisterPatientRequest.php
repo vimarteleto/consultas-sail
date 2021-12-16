@@ -8,6 +8,10 @@ use Illuminate\Contracts\Validation\Validator;
 
 class RegisterPatientRequest extends FormRequest
 {
+    protected function prepareForValidation()
+    {
+        //
+    }
 
     public function rules()
     {

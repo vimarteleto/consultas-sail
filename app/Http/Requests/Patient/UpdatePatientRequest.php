@@ -9,6 +9,10 @@ use Illuminate\Validation\Rule;
 
 class UpdatePatientRequest extends FormRequest
 {
+    protected function prepareForValidation()
+    {
+        //
+    }
 
     public function rules()
     {
