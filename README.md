@@ -1,7 +1,7 @@
 ## Projeto CRUD em Laravel
 
 O projeto foi desenvolvido utilizando Passport para autenticação de APIs e containers com Sail.
-Consistem em um sistema de clínica onde médicos podem agendar consultas com pacientes cadastrados. Cada médico pode apenas interagir com suas consultas.
+Consiste em um sistema de clínica onde médicos podem agendar consultas com pacientes cadastrados. Cada médico pode apenas interagir com suas consultas.
 
 ## Instalação da aplicação
 
@@ -44,6 +44,9 @@ Para geração das chaves:
 ```bash
 vendor/bin/sail php artisan key:generate
 ```
+
+Após esses passos, a aplicação deve estar subindo no localhost.
+Existem diversos acessos para login no arquivo de (UserSeeder.php)[/database/seeders/UserSeeder.php]
 
 ## Acessos de API
 
