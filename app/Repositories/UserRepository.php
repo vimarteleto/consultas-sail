@@ -46,6 +46,10 @@ class UserRepository
 
 	public function updateUser(UpdateUserRequest $request, $id)
 	{
+		if(isset($request->password)) {
+			$password = Hash::make($request->password);
+			$request->merge(['password' => $password]);
+		}
 		$user = $this->model->find($id);
 		$user ? $user->update($request->all()) : $user = null;
 		return $user;

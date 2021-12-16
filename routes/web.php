@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Web\DashboardController;
 use App\Http\Controllers\Web\PatientsController;
+use App\Http\Controllers\Web\ProfileController;
 use App\Http\Controllers\Web\SpecialtiesController;
 use Illuminate\Support\Facades\Route;
 
@@ -42,4 +43,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/specialty/create', [SpecialtiesController::class, 'createSpecialty'])->name('create-specialty');
     Route::post('/specialty/store', [SpecialtiesController::class, 'storeSpecialty'])->name('store-specialty');
     Route::get('/specialty/{id}', [SpecialtiesController::class, 'getSpecialtyById'])->name('specialty');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/user', [ProfileController::class, 'getProfile'])->name('profile');
+    Route::post('/user/edit/{id}', [ProfileController::class, 'updateUser'])->name('edit-user');
 });

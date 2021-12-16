@@ -38,7 +38,7 @@ class UpdateUserRequest extends FormRequest
         if($this->isJson()) {
             throw new HttpResponseException(response()->json($validator->errors(), 400));
         } else {
-            $response = redirect('dashboard')->with(['warning' => $validator->errors()->all()[0]]);
+            $response = redirect('user')->with(['warning' => $validator->errors()->all()[0]]);
             throw new HttpResponseException($response);
         }
     }
