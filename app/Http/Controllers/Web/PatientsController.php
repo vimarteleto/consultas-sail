@@ -65,4 +65,9 @@ class PatientsController extends Controller
         $this->patientRepository->createPatient($request);
         return redirect('/patients')->with(['success' => 'Paciente registrado com sucesso!']);
     }
+
+    public function teste()
+    {
+        return redirect('/patients')->with(['success' => 'ERRO!']);
+    }
 }

@@ -5,13 +5,12 @@ namespace App\Http\Requests\Patient;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Database\QueryException;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Validation\ValidationException;
 
 class RegisterPatientRequest extends FormRequest
 {
-    protected function prepareForValidation()
-    {
-        //
-    }
 
     public function rules()
     {
@@ -38,6 +37,11 @@ class RegisterPatientRequest extends FormRequest
 
     public function failedValidation(Validator $validator)
     {
-        throw new HttpResponseException(response()->json($validator->errors(), 400));
+        if($this->isJson()) {
+            throw new HttpResponseException(response()->json($validator->errors(), 400));
+        } else {
+            $response = redirect('patients')->with(['warning' => $validator->errors()->all()[0]]);
+            throw new HttpResponseException($response);
+        }
     }
 }

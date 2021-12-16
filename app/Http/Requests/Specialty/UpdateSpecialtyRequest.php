@@ -33,6 +33,11 @@ class UpdateSpecialtyRequest extends FormRequest
 
     public function failedValidation(Validator $validator)
     {
-        throw new HttpResponseException(response()->json($validator->errors(), 400));
+        if($this->isJson()) {
+            throw new HttpResponseException(response()->json($validator->errors(), 400));
+        } else {
+            $response = redirect('specialties')->with(['warning' => $validator->errors()->all()[0]]);
+            throw new HttpResponseException($response);
+        }
     }
 }
