@@ -20,6 +20,9 @@ class SpecialtySeeder extends Seeder
             ['name' => 'Infectologia'],
             ['name' => 'Dermatologia'],
             ['name' => 'Ortopedia'],
+            ['name' => 'Psiquiatria'],
+            ['name' => 'Geriatria'],
+            ['name' => 'Urologia'],
             ['name' => 'Pediatria']
         ]);
     }
