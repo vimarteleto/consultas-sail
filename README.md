@@ -2,6 +2,7 @@
 
 O projeto foi desenvolvido utilizando Passport para autenticação de APIs e containers com Sail.
 Consiste em um sistema de clínica onde médicos podem agendar consultas com pacientes cadastrados. Cada médico pode apenas interagir com suas consultas.
+Por ser uma atividade pequena, utilizei práticas de repository e validação de requests para fixação de conceitos.
 
 ## Instalação da aplicação
 
