@@ -26,6 +26,24 @@
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
 
+            <!-- CRM -->
+            <div class="mt-4">
+                <x-label for="crm" :value="__('CRM')" />
+
+                <x-input id="crm" class="block mt-1 w-full" type="text" name="crm" :value="old('crm')" maxlength="10" required />
+            </div>
+
+            <!-- Especialidade -->
+            <div class="mt-4">
+                <x-label for="specialty_id" :value="__('Especialidade')" />
+                <select name="specialty_id" id="specialty_id" name="specialty_id" style="width: 400px" class='rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'>
+                    @foreach ($specialties as $specialty)
+                        <option value="{{$specialty->id}}">{{$specialty->name}}</option>
+                    @endforeach
+                </select>
+            </div>
+            
+
             <!-- Password -->
             <div class="mt-4">
                 <x-label for="password" :value="__('Password')" />
@@ -47,11 +65,11 @@
 
             <div class="flex items-center justify-end mt-4">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
+                    {{ __('Voltar para o login') }}
                 </a>
 
                 <x-button class="ml-4">
-                    {{ __('Register') }}
+                    {{ __('Registrar') }}
                 </x-button>
             </div>
         </form>

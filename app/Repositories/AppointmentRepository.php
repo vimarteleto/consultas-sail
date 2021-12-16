@@ -27,7 +27,7 @@ class AppointmentRepository
 
 	public function getAppointments()
 	{
-		return $this->model->all();
+		return $this->model->with('patient', 'doctor')->get();
 	}
 	
 	public function getAppointmentById($id)

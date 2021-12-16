@@ -41,7 +41,7 @@ class UserRepository
 	public function getAppointmentsByUserId($id)
 	{
 		$user = $this->model->find($id);
-		return $user ? $user->appointments()->get() : null;
+		return $user ? $user->appointments()->with('patient', 'doctor')->get() : null;
 	}
 
 	public function updateUser(UpdateUserRequest $request, $id)
