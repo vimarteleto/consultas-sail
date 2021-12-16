@@ -11,4 +11,9 @@ class Specialty extends Model
 
     protected $guarded = [];
     protected $table = 'specialties';
+
+    public function doctors()
+    {
+        return $this->hasMany(User::class);
+    }
 }

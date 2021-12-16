@@ -2,7 +2,8 @@
 
 namespace App\Repositories;
 
-use App\Http\Requests\Auth\RegisterRequest;
+use App\Http\Requests\User\RegisterUserRequest;
+use App\Http\Requests\User\UpdateUserRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -15,7 +16,7 @@ class UserRepository
 		$this->model = $model;
 	}
 
-	public function create(RegisterRequest $request)
+	public function createUser(RegisterUserRequest  $request)
 	{
 		$user = $this->model->create([
 			'email' => $request->email,
@@ -27,7 +28,7 @@ class UserRepository
 		return $user;
 	}
 
-	public function getAll()
+	public function getUsers()
 	{
 		return $this->model->all();
 	}
@@ -40,6 +41,21 @@ class UserRepository
 	public function getAppointmentsByUserId($id)
 	{
 		$user = $this->model->find($id);
-		return $user->appointments()->get();
+		return $user ? $user->appointments()->get() : null;
+	}
+
+	public function updateUser(UpdateUserRequest $request, $id)
+	{
+		$user = $this->model->find($id);
+		$user ? $user->update($request->all()) : $user = null;
+		return $user;
+	}
+
+	public function deleteUser($id)
+	{
+		$user = $this->model->find($id);
+		$user ? $user->delete() : $user = null;
+		return $user;
+		
 	}
 }

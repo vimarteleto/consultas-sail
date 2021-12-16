@@ -10,4 +10,14 @@ class Appointment extends Model
     use HasFactory;
 
     protected $guarded = [];
+    
+    public function patient()
+    {
+        return $this->belongsTo(Patient::class);
+    }
+
+    public function doctor()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

@@ -1,22 +1,20 @@
 <?php
 
-namespace App\Http\Requests\Auth;
+namespace App\Http\Requests\Patient;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Contracts\Validation\Validator;
 
-class RegisterRequest extends FormRequest
+class RegisterPatientRequest extends FormRequest
 {
 
     public function rules()
     {
         return [
-            'email' => ['required', 'string', 'email', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'max:24'],
-            'crm' => ['required', 'unique:users', 'max:10'],
-            'name' => ['required'],
-            'specialty_id' => ['required', 'exists:App\Models\Specialty,id'],
+            'cpf' => ['required', 'string', 'unique:patients', 'max:11'],
+            'name' => ['required', 'string', 'min:2'],
+            'birthday' => ['required', 'date'],
         ];
     }
 
@@ -28,8 +26,9 @@ class RegisterRequest extends FormRequest
             'email' => 'Field :attribute must be valid email',
             'unique' => 'Field :attribute is already taken',
             'min' => 'Field :attribute must have at least :min characters',
-            'max' => 'Field :attribute must have less than :m characters',
+            'max' => 'Field :attribute must have less than :max characters',
             'exists' => 'Field :attribute does not exists in database',
+            'date' => 'Field :attribute must be date format',
         ];
     }
 

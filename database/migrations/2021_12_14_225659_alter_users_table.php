@@ -15,9 +15,9 @@ class AlterUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->unsignedBigInteger('specialty_id')->after('email');
-            $table->string('crm')->after('id');
+            $table->string('crm')->unique()->after('id');
 
-            $table->foreign('specialty_id')->references('id')->on('specialties');
+            $table->foreign('specialty_id')->references('id')->on('specialties')->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
     /**

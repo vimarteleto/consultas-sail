@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\API\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\RegisterRequest;
+use App\Http\Requests\User\RegisterUserRequest;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,9 +17,9 @@ class AuthController extends Controller
         $this->userRepository = $userRepository;
     }
 
-    public function register(RegisterRequest $request)
+    public function register(RegisterUserRequest $request)
     {
-        $user = $this->userRepository->create($request);
+        $user = $this->userRepository->createUser($request);
         return response()->json($user, 200);
     }
 

@@ -15,4 +15,8 @@ class Patient extends Model
         'birthday' => 'date:d-m-Y',
     ];
 
+    public function appointments()
+    {
+        return $this->hasMany(Appointment::class);
+    }
 }
