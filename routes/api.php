@@ -26,7 +26,7 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::middleware('auth:api')->group(function () {
     Route::get('/users', [UserController::class, 'getUsers']);
     Route::get('/users/{id}', [UserController::class, 'getUserById']);
-    Route::get('/users/appointments/{id}', [UserController::class, 'getAppointmentsByUserId']);
+    Route::get('/users/{id}/appointments', [UserController::class, 'getAppointmentsByUserId']);
     Route::put('/users/{id}', [UserController::class, 'updateUser']);
     Route::delete('/users/{id}', [UserController::class, 'deleteUser']);
 });
@@ -36,7 +36,7 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/patients', [PatientController::class, 'createPatient']);
     Route::get('/patients', [PatientController::class, 'getPatients']);
     Route::get('/patients/{id}', [PatientController::class, 'getPatientById']);
-    Route::get('/patients/appointments/{id}', [PatientController::class, 'getAppointmentsByPatientId']);
+    Route::get('/patients/{id}/appointments', [PatientController::class, 'getAppointmentsByPatientId']);
     Route::put('/patients/{id}', [PatientController::class, 'updatePatient']);
     Route::delete('/patients/{id}', [PatientController::class, 'deletePatient']);
 });
@@ -46,7 +46,7 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/specialties', [SpecialtyController::class, 'createSpecialty']);
     Route::get('/specialties', [SpecialtyController::class, 'getSpecialties']);
     Route::get('/specialties/{id}', [SpecialtyController::class, 'getSpecialtyById']);
-    Route::get('/specialties/doctors/{id}', [SpecialtyController::class, 'getDoctorsBySpecialtyId']);
+    Route::get('/specialties/{id}/doctors', [SpecialtyController::class, 'getDoctorsBySpecialtyId']);
     Route::put('/specialties/{id}', [SpecialtyController::class, 'updateSpecialty']);
     Route::delete('/specialties/{id}', [SpecialtyController::class, 'deleteSpecialty']);
 });
@@ -56,8 +56,8 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/appointments', [AppointmentController::class, 'createAppointment']);
     Route::get('/appointments', [AppointmentController::class, 'getAppointments']);
     Route::get('/appointments/{id}', [AppointmentController::class, 'getAppointmentById']);
-    Route::get('/appointments/patient/{id}', [AppointmentController::class, 'getAppointmentPatient']);
-    Route::get('/appointments/doctor/{id}', [AppointmentController::class, 'getAppointmentDoctor']);
+    Route::get('/appointments/{id}/patient', [AppointmentController::class, 'getAppointmentPatient']);
+    Route::get('/appointments/{id}/doctor', [AppointmentController::class, 'getAppointmentDoctor']);
     Route::put('/appointments/{id}', [AppointmentController::class, 'updateAppointment']);
     Route::delete('/appointments/{id}', [AppointmentController::class, 'deleteAppointment']);
 });
