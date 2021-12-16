@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard de consultas') }}
+            {{isset($patient) ? "Consultas de $patient->name" : 'Dashboard de consultas'}}
         </h2>
     </x-slot>
 
@@ -50,6 +50,14 @@
                     >
                         Nova consulta
                     </a>
+                    @if (isset($patient))
+                    <a  class="px-4 py-1 text-sm btn btn-sm btn-dark"
+                        href="{{route('patients')}}"
+                    >
+                        Voltar
+                    </a>
+                    @endif
+                    
                 </div>
             </div>
         </div>

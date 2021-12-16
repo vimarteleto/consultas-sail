@@ -70,4 +70,11 @@ class PatientsController extends Controller
     {
         return redirect('/patients')->with(['success' => 'ERRO!']);
     }
+
+    public function getAppointmentsByPatientId($id)
+    {
+        $patient = $this->patientRepository->getPatientById($id);
+        $appointments = $this->patientRepository->getAppointmentsByPatientId($id)->where('user_id', Auth::user()->id);
+        return view('appointments.dashboard', ['appointments' => $appointments, 'patient' => $patient]);
+    }
 }

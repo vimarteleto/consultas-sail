@@ -44,7 +44,7 @@
                                 </td>
                                 <td class="px-2 py-2">
                                     <a  class="px-4 py-1 text-sm btn btn-sm btn-dark"
-                                        {{-- href="{{route('appointments-patient', ['id' => $patient->id])}}" --}}
+                                        href="{{route('patient-appointments', ['id' => $patient->id])}}"
                                     >
                                         Consultas
                                     </a>
