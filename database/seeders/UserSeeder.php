@@ -21,8 +21,8 @@ class UserSeeder extends Seeder
             ['crm' => '33333', 'name' => 'João Moreira', 'email' => 'joao@medico.com', 'specialty_id' => '3', 'password' => Hash::make('123456789')],
             ['crm' => '44444', 'name' => 'Márcia Teixeira', 'email' => 'marcia@medico.com', 'specialty_id' => '4', 'password' => Hash::make('123456789')],
             ['crm' => '55555', 'name' => 'Cláudio Pires', 'email' => 'claudio@medico.com', 'specialty_id' => '5', 'password' => Hash::make('123456789')],
-            ['crm' => '66666', 'name' => 'Carla Silva', 'email' => 'marcia@medico.com', 'specialty_id' => '1', 'password' => Hash::make('123456789')],
-            ['crm' => '77777', 'name' => 'Prisicila Silveira', 'email' => 'marcia@medico.com', 'specialty_id' => '2', 'password' => Hash::make('123456789')],
+            ['crm' => '66666', 'name' => 'Carla Silva', 'email' => 'carla@medico.com', 'specialty_id' => '1', 'password' => Hash::make('123456789')],
+            ['crm' => '77777', 'name' => 'Prisicila Silveira', 'email' => 'priscila@medico.com', 'specialty_id' => '2', 'password' => Hash::make('123456789')],
         ]);
     }
 }

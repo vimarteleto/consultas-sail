@@ -70,6 +70,7 @@ class SpecialtiesController extends Controller
     public function getDoctorsBySpecialtyId($id)
     {
         $users = $this->specialtyRepository->getDoctorsBySpecialtyId($id);
-        return view('specialties.specialty-users', ['users' => $users]);
+        $specialty = $this->specialtyRepository->getSpecialtyById($id);
+        return view('specialties.specialty-users', ['users' => $users, 'specialty' => $specialty]);
     }
 }
