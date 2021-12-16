@@ -17,6 +17,7 @@ class SpecialtiesController extends Controller
     protected $userRepository;
     protected $appointmentRepository;
     protected $patientRepository;
+    protected $specialtyRepository;
 
     public function __construct(
         UserRepository $userRepository, 
@@ -40,9 +41,7 @@ class SpecialtiesController extends Controller
     public function getSpecialtyById($id)
     {
         $specialty = $this->specialtyRepository->getSpecialtyById($id);
-        return view('specialties.edit-specialty', [
-            'specialty' => $specialty,
-        ]);
+        return view('specialties.edit-specialty', ['specialty' => $specialty]);
     }
 
     public function updateSpecialty(UpdateSpecialtyRequest $request, $id)
@@ -66,5 +65,11 @@ class SpecialtiesController extends Controller
     {
         $this->specialtyRepository->createSpecialty($request);
         return redirect('/specialties')->with(['success' => 'Especialidade registrada com sucesso!']);
+    }
+
+    public function getDoctorsBySpecialtyId($id)
+    {
+        $users = $this->specialtyRepository->getDoctorsBySpecialtyId($id);
+        return view('specialties.specialty-users', ['users' => $users]);
     }
 }

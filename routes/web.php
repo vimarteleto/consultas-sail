@@ -34,7 +34,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/patient/create', [PatientsController::class, 'createPatient'])->name('create-patient');
     Route::post('/patient/store', [PatientsController::class, 'storePatient'])->name('store-patient');
     Route::get('/patient/{id}', [PatientsController::class, 'getPatientById'])->name('patient');
-
     Route::get('/patient/{id}/appointments', [PatientsController::class, 'getAppointmentsByPatientId'])->name('patient-appointments');
 });
 
@@ -45,6 +44,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/specialty/create', [SpecialtiesController::class, 'createSpecialty'])->name('create-specialty');
     Route::post('/specialty/store', [SpecialtiesController::class, 'storeSpecialty'])->name('store-specialty');
     Route::get('/specialty/{id}', [SpecialtiesController::class, 'getSpecialtyById'])->name('specialty');
+    Route::get('/specialty/{id}/users', [SpecialtiesController::class, 'getDoctorsBySpecialtyId'])->name('specialty-users');
 });
 
 Route::middleware('auth')->group(function () {

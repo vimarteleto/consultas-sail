@@ -40,7 +40,7 @@
                                 </td>
                                 <td class="px-2 py-2">
                                     <a  class="px-4 py-1 text-sm btn btn-sm btn-dark"
-                                        {{-- href="{{route('appointments-specialty', ['id' => $specialty->id])}}" --}}
+                                        href="{{route('specialty-users', ['id' => $specialty->id])}}"
                                     >
                                         Médicos
                                     </a>
