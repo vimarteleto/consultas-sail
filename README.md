@@ -50,4 +50,4 @@ Existem diversos acessos para login no arquivo de [UserSeeder.php](/database/see
 
 ## Acessos de API
 
-O arquivo consultas-sail.json contem os acessos feitos no insomnia. As variáveis de ambiente setada são a url padrão e o token de acesso. Para geração do token é necessário efeturar um o login.
+O arquivo consultas-sail.json contem os acessos feitos no insomnia. As variáveis de ambiente setadas são a url padrão e o token de acesso. Para geração do token é necessário efeturar um o login.
