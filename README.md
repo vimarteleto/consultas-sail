@@ -45,7 +45,7 @@ Para geração das chaves:
 vendor/bin/sail php artisan key:generate
 ```
 
-Após esses passos, a aplicação deve estar subindo no localhost.
+Após esses passos, a aplicação deve estar subindo no localhost nas portas padrão.
 Existem diversos acessos para login no arquivo de [UserSeeder.php](/database/seeders/UserSeeder.php)
 
 ## Acessos de API
