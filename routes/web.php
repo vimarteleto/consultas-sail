@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Web\DashboardController;
 use App\Http\Controllers\Web\PatientsController;
+use App\Http\Controllers\Web\SpecialtiesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,4 +33,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/patient/create', [PatientsController::class, 'createPatient'])->name('create-patient');
     Route::post('/patient/store', [PatientsController::class, 'storePatient'])->name('store-patient');
     Route::get('/patient/{id}', [PatientsController::class, 'getPatientById'])->name('patient');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/specialties', [SpecialtiesController::class, 'getSpecialties'])->name('specialties');
+    Route::post('/specialty/edit/{id}', [SpecialtiesController::class, 'updateSpecialty'])->name('edit-specialty');
+    Route::get('/specialty/delete/{id}', [SpecialtiesController::class, 'deleteSpecialty'])->name('delete-specialty');
+    Route::get('/specialty/create', [SpecialtiesController::class, 'createSpecialty'])->name('create-specialty');
+    Route::post('/specialty/store', [SpecialtiesController::class, 'storeSpecialty'])->name('store-specialty');
+    Route::get('/specialty/{id}', [SpecialtiesController::class, 'getSpecialtyById'])->name('specialty');
 });
