@@ -24,12 +24,30 @@
             <header class="bg-white shadow">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                     {{ $header }}
+                    @if (session('danger'))
+                        <div class="alert alert-danger" role="alert">
+                        {{session('danger')}}
+                        </div>
+                    @endif
+
+                    @if (session('success'))
+                        <div class="alert alert-success" role="alert">
+                        {{session('success')}}
+                        </div>
+                    @endif
+
+                    @if (session('warning'))
+                        <div class="alert alert-warning" role="alert">
+                        {{session('warning')}}
+                        </div>
+                    @endif
                 </div>
             </header>
 
             <!-- Page Content -->
             <main>
-                {{ $slot }}
+                
+            {{ $slot }}
             </main>
         </div>
     </body>

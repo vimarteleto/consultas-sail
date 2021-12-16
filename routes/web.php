@@ -19,4 +19,5 @@ require __DIR__.'/auth.php';
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'getAppointments'])->name('dashboard');
     Route::get('/appointment/{id}', [DashboardController::class, 'getAppointmentById'])->name('appointment');
+    Route::get('/appointment/delete/{id}', [DashboardController::class, 'deleteAppointment'])->name('delete-appointment');
 });

@@ -36,7 +36,7 @@
                                 </td>
                                 <td class="px-2 py-2">
                                     <a  class="px-4 py-1 text-sm btn btn-sm btn-danger"
-                                        href="/#"
+                                        href="{{route('delete-appointment', ['id' => $appointment->id])}}"
                                     >
                                         Deletar
                                     </a>

@@ -31,4 +31,10 @@ class DashboardController extends Controller
         $appointment = $this->appointmentRepository->getAppointmentById($id);
         return view('appointment', ['appointment' => $appointment]);
     }
+
+    public function deleteAppointment($id)
+    {
+        $this->appointmentRepository->deleteAppointment($id);
+        return redirect('dashboard')->with(['danger' => 'Consulta excluída com sucesso!']);
+    }
 }
