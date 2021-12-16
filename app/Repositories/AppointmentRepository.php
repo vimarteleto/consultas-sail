@@ -38,7 +38,8 @@ class AppointmentRepository
 	public function updateAppointment(UpdateAppointmentRequest $request, $id)
 	{
 		$appointment = $this->model->find($id);
-		$appointment ? $appointment->update($request->all()) : $appointment = null;
+		$request = $request->only('patient_id', 'date_time');
+		$appointment ? $appointment->update($request) : $appointment = null;
 		return $appointment;
 	}
 

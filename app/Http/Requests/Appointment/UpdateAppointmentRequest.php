@@ -9,6 +9,11 @@ use Illuminate\Validation\Rule;
 
 class UpdateAppointmentRequest extends FormRequest
 {
+    protected function prepareForValidation()
+    {
+        $date_time = "$this->date $this->time:00";
+        $this->merge(['date_time' => $date_time]);
+    }
 
     public function rules()
     {

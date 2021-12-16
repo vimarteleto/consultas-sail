@@ -5,9 +5,17 @@ namespace App\Http\Requests\Appointment;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterAppointmentRequest extends FormRequest
 {
+
+    protected function prepareForValidation()
+    {
+        $date_time = "$this->date $this->time:00";
+        $this->merge(['date_time' => $date_time]);
+        $this->merge(['user_id' => Auth::user()->id]);
+    }
 
     public function rules()
     {

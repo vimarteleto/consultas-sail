@@ -25,7 +25,7 @@
                             <tr class="whitespace-nowrap">
                                 <td class="px-4 py-2 text-md text-gray-500">{{$appointment->id}}</td>
                                 <td class="px-2 py-2 text-md text-gray-500">{{$appointment->patient->name}}</td>
-                                <td class="px-2 py-2 text-md text-gray-500">{{date('d-m-Y', strtotime($appointment->date_time))}}</td>
+                                <td class="px-2 py-2 text-md text-gray-500">{{date('d/m/Y', strtotime($appointment->date_time))}}</td>
                                 <td class="px-4 py-2 text-md text-gray-500">{{date('H:i', strtotime($appointment->date_time))}}</td>
                                 <td class="px-2 py-2">
                                     <a  class="px-4 py-1 text-sm btn btn-sm btn-primary"
@@ -45,6 +45,11 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <a  class="px-4 py-1 text-sm btn btn-sm btn-success"
+                        href="{{route('create-appointment')}}"
+                    >
+                        Nova consulta
+                    </a>
                 </div>
             </div>
         </div>
