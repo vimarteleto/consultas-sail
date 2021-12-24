@@ -47,14 +47,15 @@ class DashboardController extends Controller
     public function updateAppointment(UpdateAppointmentRequest $request, $id)
     {   
         
-        $this->appointmentRepository->updateAppointment($request, $id);
-        return redirect('/dashboard')->with(['warning' => 'Consulta editada com sucesso!']);
+        $appointment = $this->appointmentRepository->updateAppointment($request, $id);
+        return redirect('/dashboard')->with(['warning' => "Consulta $appointment->id editada com sucesso!"]);
     }
 
     public function deleteAppointment($id)
     {
+        $appointment = $this->appointmentRepository->getAppointmentById($id);
         $this->appointmentRepository->deleteAppointment($id);
-        return redirect('/dashboard')->with(['danger' => 'Consulta excluída com sucesso!']);
+        return redirect('/dashboard')->with(['danger' => "Consulta $appointment->id excluída com sucesso!"]);
     }
 
     public function createAppointment()
@@ -67,7 +68,7 @@ class DashboardController extends Controller
 
     public function storeAppointment(RegisterAppointmentRequest $request)
     {
-        $this->appointmentRepository->createAppointment($request);
-        return redirect('/dashboard')->with(['success' => 'Consulta registrada com sucesso!']);
+        $appointment = $this->appointmentRepository->createAppointment($request);
+        return redirect('/dashboard')->with(['success' => "Consulta $appointment->id registrada com sucesso!"]);
     }
 }

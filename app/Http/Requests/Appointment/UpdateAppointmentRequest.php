@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Appointment;
 
+use App\Http\Requests\Messages;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Contracts\Validation\Validator;
@@ -9,6 +10,13 @@ use Illuminate\Validation\Rule;
 
 class UpdateAppointmentRequest extends FormRequest
 {
+    protected $messages;
+
+    public function __construct(Messages $messages)
+    {
+        $this->messages = $messages;
+    }
+
     protected function prepareForValidation()
     {
         if(!isset($this->date_time)) {
@@ -28,17 +36,11 @@ class UpdateAppointmentRequest extends FormRequest
 
     public function messages()
     {
-        return [
-            'required' => 'Field :attribute is required',
-            'string' => 'Field :attribute must be a string',
-            'email' => 'Field :attribute must be valid email',
-            'unique' => 'Field :attribute is already taken',
-            'min' => 'Field :attribute must have at least :min characters',
-            'max' => 'Field :attribute must have less than :max characters',
-            'exists' => 'Field :attribute does not exists in database',
-            'date' => 'Field :attribute must be date format',
-            'date_format' => 'Field :attribute must be datetime format',
-        ];
+        if($this->isJson()) {
+            return $this->messages->jsonMessages;
+        } else {
+            return $this->messages->webMessages;
+        }
     }
 
     public function failedValidation(Validator $validator)

@@ -46,14 +46,15 @@ class SpecialtiesController extends Controller
 
     public function updateSpecialty(UpdateSpecialtyRequest $request, $id)
     {
-        $this->specialtyRepository->updateSpecialty($request, $id);
-        return redirect('/specialties')->with(['warning' => 'Especialidade editada com sucesso!']);
+        $specialty = $this->specialtyRepository->updateSpecialty($request, $id);
+        return redirect('/specialties')->with(['warning' => "Especialidade $specialty->name editada com sucesso!"]);
     }
 
     public function deleteSpecialty($id)
     {
+        $specialty = $this->specialtyRepository->getSpecialtyById($id);
         $this->specialtyRepository->deleteSpecialty($id);
-        return redirect('/specialties')->with(['danger' => 'Especialidade excluída com sucesso!']);
+        return redirect('/specialties')->with(['danger' => "Especialidade $specialty->name excluída com sucesso!"]);
     }
 
     public function createSpecialty()
@@ -63,8 +64,8 @@ class SpecialtiesController extends Controller
 
     public function storeSpecialty(RegisterSpecialtyRequest $request)
     {
-        $this->specialtyRepository->createSpecialty($request);
-        return redirect('/specialties')->with(['success' => 'Especialidade registrada com sucesso!']);
+        $specialty = $this->specialtyRepository->createSpecialty($request);
+        return redirect('/specialties')->with(['success' => "Especialidade $specialty->name registrada com sucesso!"]);
     }
 
     public function getDoctorsBySpecialtyId($id)

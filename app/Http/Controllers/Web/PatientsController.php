@@ -30,7 +30,6 @@ class PatientsController extends Controller
 
     public function getPatients()
     {
-        $id = Auth::user()->id;
         $patients = $this->patientRepository->getPatients();
         return view('patients.patients', ['patients' => $patients]);
     }
@@ -45,14 +44,15 @@ class PatientsController extends Controller
 
     public function updatePatient(UpdatePatientRequest $request, $id)
     {
-        $this->patientRepository->updatePatient($request, $id);
-        return redirect('/patients')->with(['warning' => 'Paciente editado com sucesso!']);
+        $patient = $this->patientRepository->updatePatient($request, $id);
+        return redirect('/patients')->with(['warning' => "Paciente $patient->name editado com sucesso!"]);
     }
 
     public function deletePatient($id)
     {
+        $patient = $this->patientRepository->getPatientById($id);
         $this->patientRepository->deletePatient($id);
-        return redirect('/patients')->with(['danger' => 'Paciente excluído com sucesso!']);
+        return redirect('/patients')->with(['danger' => "Paciente $patient->name excluído com sucesso!"]);
     }
 
     public function createPatient()
@@ -62,8 +62,8 @@ class PatientsController extends Controller
 
     public function storePatient(RegisterPatientRequest $request)
     {
-        $this->patientRepository->createPatient($request);
-        return redirect('/patients')->with(['success' => 'Paciente registrado com sucesso!']);
+        $patient = $this->patientRepository->createPatient($request);
+        return redirect('/patients')->with(['success' => "Paciente $patient->name registrado com sucesso!"]);
     }
 
     public function teste()
