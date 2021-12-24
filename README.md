@@ -2,6 +2,7 @@
 
 O projeto foi desenvolvido utilizando Passport para autenticação de APIs e containers com Sail.
 Consiste em um sistema de clínica onde médicos podem agendar consultas com pacientes cadastrados. Cada médico pode apenas interagir com suas consultas.
+Por ser uma atividade simples, utilizei práticas de repository e validação de requests para fixação de conceitos.
 
 ## Instalação da aplicação
 
@@ -45,9 +46,9 @@ Para geração das chaves:
 vendor/bin/sail php artisan key:generate
 ```
 
-Após esses passos, a aplicação deve estar subindo no localhost.
+Após esses passos, a aplicação deve estar subindo no localhost nas portas padrão.
 Existem diversos acessos para login no arquivo de [UserSeeder.php](/database/seeders/UserSeeder.php)
 
 ## Acessos de API
 
-O arquivo consultas-sail.json contem os acessos feitos no insomnia. As variáveis de ambiente setada são a url padrão e o token de acesso. Para geração do token é necessário efeturar um o login.
+O arquivo consultas-sail.json contem os acessos feitos no insomnia. As variáveis de ambiente setadas são a url padrão e o token de acesso. Para geração do token é necessário efeturar um o login.
